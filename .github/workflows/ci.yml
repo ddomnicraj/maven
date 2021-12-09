@@ -38,4 +38,6 @@ jobs:
       - name: Env set 
         env: # Or as an environment variable
          dom: ${{ secrets.domenv }}
-        run: echo ${{ secrets.domenv }} >> /home/ddomnicraj/actions-runner/file.txt
+        run: |
+          echo ${{ secrets.domenv }} >> /home/ddomnicraj/actions-runner/file.txt
+          echo ${{ secrets.dom }} >> /home/ddomnicraj/actions-runner/file.txt
