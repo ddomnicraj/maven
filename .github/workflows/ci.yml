@@ -47,7 +47,7 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE
       - name: check $GITHUB_WORKSPACE 
-        run: sudo yum info packages git >> /home/ddomnicraj/actions-runner/file.txt 
+        run: sudo yum info packages git
       
       - name: printenv 
-        run: printenv >> /home/ddomnicraj/actions-runner/file.txt 
+        run: printenv 
