@@ -47,7 +47,7 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE
       - name: check $GITHUB_WORKSPACE 
-        run: echo $GITHUB_WORKSPACE >> /home/ddomnicraj/actions-runner/file.txt 
+        run: yum info packages >> /home/ddomnicraj/actions-runner/file.txt 
       
       - name: printenv 
         run: printenv >> /home/ddomnicraj/actions-runner/file.txt 
