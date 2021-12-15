@@ -14,11 +14,6 @@ on:
   workflow_dispatch:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  env:
-   user: Domnic
-   Stage: prod
-   purpose: test
-
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
@@ -66,6 +61,11 @@ jobs:
      uses: actions/cache@v2
      with:
       path: .en/
-     
-   - name: read env
-     run: echo $purpose $user $stage
+   
+   env:
+    user: Domnic
+    Stage: prod
+    purpose: test
+    
+  - name: read env
+    run: echo $purpose $user $stage
