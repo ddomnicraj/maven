@@ -58,3 +58,11 @@ jobs:
        user: ${{ secrets.domenv }}
        stage: dev
       run: echo $user $stage > /home/ddomnicraj/actions-runner/file.txt      
+
+    - name: Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+       name: my-artifact
+       path: |
+	       ./pom.html
+       retention-days: 1
