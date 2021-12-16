@@ -64,5 +64,5 @@ jobs:
       with:
        name: my-artifact
        path: |
-	       ./pom.html
+        pom.html
        retention-days: 1
