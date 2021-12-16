@@ -24,7 +24,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "greet"
-  greet:
+  build:
     # The type of runner that the job will run on
     runs-on: self-hosted
     env:
@@ -46,6 +46,10 @@ jobs:
     - name: Run a one-line script
       run: echo Hello, world!
 
+  test:
+    # The type of runner that the job will run on
+    runs-on: self-hosted
+    steps:
     - name: Run a multi-line script
       run: |
        echo Add other actions to build,
@@ -59,6 +63,11 @@ jobs:
        stage: dev
       run: echo $user $stage > /home/ddomnicraj/actions-runner/file.txt      
 
+  deploy:
+    # The type of runner that the job will run on
+    runs-on: self-hosted
+    needs: test
+    steps:
     - name: Artifacts
       uses: actions/upload-artifact@v2
       with:
