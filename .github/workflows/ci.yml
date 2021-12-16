@@ -1,71 +1,60 @@
-# This is a basic workflow to help you get started with Actions
+# This is a basic workflow that is manually triggered
 
-name: CI
+name: Manual workflow
 
-# Controls when the workflow will run
+env:
+ manager: king
+ founder: queen
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+    # Inputs the workflow accepts.
+    inputs:
+      name:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'Person to greet'
+        # Default value if no value is explicitly provided
+        default: 'World'
+        # Input has to be provided for the workflow to run
+        required: true 
+  push:
+    branches: [ dev ]      
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
+  # This workflow contains a single job called "greet"
+  greet:
     # The type of runner that the job will run on
-    runs-on: self-hosted
-
+    runs-on: ubuntu-latest
+    env:
+     owner: Dom
+     co-owner: Raj
+     
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
-
-      - name: Env set 
-        env: # Or as an environment variable
-         dom: ${{ secrets.domenv }}
-        run: echo ${{ secrets.dom }} > /home/ddomnicraj/actions-runner/file.txt
-  test:
-    # The type of runner that the job will run on
-    runs-on: self-hosted
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE
-      - name: check $GITHUB_WORKSPACE 
-        run: sudo yum history 
+    - name: cache
+      uses: actions/cache@v2
+      with:
+       path: .en/
+       key: ${CI_COMMIT_REF_SLUG}
+       
+    # Runs a single command using the runners shell
+    - name: Send greeting
+      run: echo "Hello ${{ github.event.inputs.name }}"
       
-      - name: printenv 
-        run: hostname
+    - name: Run a one-line script
+      run: echo Hello, world!
 
-      - name: file
-        run: touch /home/ddomnicraj/actions-runner/test
-        
-  pre-stage:
-    runs-on: self-hosted        
-   steps:
-   - name: cache
-     uses: actions/cache@v2
-     with:
-      path: .en/
-   
-   env:
-    user: Domnic
-    Stage: prod
-    purpose: test
-    
-  - name: read env
-    run: echo $purpose $user $stage
+    - name: Run a multi-line script
+      run: |
+       echo Add other actions to build,
+       echo test, and deploy your project
+       echo " who: $manager"
+       echo " auth: $owner"
+          
+    - name: Env set 
+      env: # Or as an environment variable
+       user: ${{ secrets.domenv }}
+       stage: dev
+      run: echo $user $stage > /home/ddomnicraj/actions-runner/file.txt      
