@@ -72,6 +72,15 @@ jobs:
     steps:
     - name: Run a multi-line script
       run: echo " Test "
+      
+  test2:
+    # The type of runner that the job will run on
+    runs-on: self-hosted
+    needs: [test1,deploy]
+    steps:
+    - name: Run a multi-line script
+      run: echo " Test "
+      
 
   deploy:
     # The type of runner that the job will run on
