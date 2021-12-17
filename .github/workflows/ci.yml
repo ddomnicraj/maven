@@ -5,6 +5,7 @@ name: Manual workflow
 env:
  manager: king
  founder: queen
+ auth: Domnic Raj D
 
 # Controls when the action will run. Workflow runs when manually triggered using the UI
 # or API.
