@@ -62,7 +62,15 @@ jobs:
       env: # Or as an environment variable
        user: ${{ secrets.domenv }}
        stage: dev
-      run: echo $user $stage > /home/ddomnicraj/actions-runner/file.txt      
+      run: echo $user $stage > /home/ddomnicraj/actions-runner/file.txt
+
+  test1:
+    # The type of runner that the job will run on
+    runs-on: self-hosted
+    needs: build
+    steps:
+    - name: Run a multi-line script
+      run: echo " Test "
 
   deploy:
     # The type of runner that the job will run on
