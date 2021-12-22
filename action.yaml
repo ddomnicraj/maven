@@ -4,3 +4,4 @@ runs:
  steps:
  - name: say hello to the world
    run: echo "Hello $king $owner" 
+   shell: bash
