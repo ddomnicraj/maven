@@ -1,0 +1,6 @@
+name: Action Tasks
+runs:
+ using: "composite"
+ steps:
+ - name: say hello to the world
+   run: echo "Hello $king $owner" 
