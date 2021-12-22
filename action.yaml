@@ -6,4 +6,4 @@ runs:
    run: |
     yum info --help
     echo "Hello $king $owner" 
-    shell: bash
+   shell: bash
