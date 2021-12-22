@@ -94,3 +94,9 @@ jobs:
        path: /home/ddomnicraj/actions-runner/en
        retention-days: 1
    
+  sync:
+   runs-on: self-hosted
+   needs: deploy
+   steps:
+   - name: composite action
+     uses: ddomnicraj/maven@dev-domnicraj
