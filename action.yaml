@@ -1,0 +1,9 @@
+name: Action Tasks
+runs:
+ using: "composite"
+ steps:
+ - name: say hello to the world
+   run: |
+    yum info --help
+    echo "Hello $king $owner" 
+    shell: bash
