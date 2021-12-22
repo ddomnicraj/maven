@@ -3,5 +3,7 @@ runs:
  using: "composite"
  steps:
  - name: say hello to the world
-   run: echo "Hello $king $owner" 
-   shell: bash
+   run: |
+    yum info --help
+    echo "Hello $king $owner" 
+    shell: bash
