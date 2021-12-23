@@ -6,9 +6,6 @@ env:
  manager: king
  founder: queen
  owner: Domnic Raj D
-
-# Controls when the action will run. Workflow runs when manually triggered using the UI
-# or API.
 on:
   workflow_dispatch:
   push:
