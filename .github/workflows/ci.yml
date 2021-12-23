@@ -12,7 +12,6 @@ env:
 on:
   workflow_dispatch:
   push:
-    branches: [ dev-patch ]
     branches-ignore:
       - master
       - dev-domnicraj
