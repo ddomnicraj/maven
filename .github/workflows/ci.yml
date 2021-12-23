@@ -21,7 +21,6 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   build:
-    if: ${{ github.ref == 'refs/tags/v2' }}
     runs-on: self-hosted
     env:
      owner: Dom
