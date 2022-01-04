@@ -6,22 +6,14 @@ env:
  manager: king
  founder: queen
  owner: Domnic Raj D
+uses: actions/cache@v2
+with:
+ path: .path/
+ key: ${{ runner.os }}-venv-${{ hashFiles('.venv/') }} 
 
 # Controls when the action will run. Workflow runs when manually triggered using the UI
 # or API.
-on:
-  workflow_dispatch:
-    # Inputs the workflow accepts.
-    inputs:
-      name:
-        # Friendly description to be shown in the UI instead of 'name'
-        description: 'Person to greet'
-        # Default value if no value is explicitly provided
-        default: 'World'
-        # Input has to be provided for the workflow to run
-        required: true 
-  push:
-    branches: [ master ]      
+on: [workflow_dispatch, push]    
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "greet"
@@ -46,3 +38,8 @@ jobs:
       
     - name: Run a one-line script
       run: echo Hello, world!!
+      
+  test:
+  - name: steps
+    run: echo Hello
+  
